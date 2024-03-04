@@ -1,0 +1,47 @@
+SELECT * 
+FROM transactions;
+
+SELECT * 
+FROM transactions LIMIT 5;
+
+SELECT COUNT(*) 
+FROM transactions;
+
+SELECT * 
+FROM transactions
+WHERE market_code = "Mark001";
+
+SELECT * 
+FROM transactions
+WHERE currency = "USD";
+
+SELECT COUNT(*) 
+FROM transactions
+WHERE market_code = "Mark001";
+
+SELECT DISTINCT product_code
+FROM transactions
+WHERE market_code = "Mark001";
+
+SELECT transactions.*, date.*
+FROM transactions
+INNER JOIN date
+ON transactions.order_date = date.date;
+
+SELECT transactions.*, date.*
+FROM transactions
+INNER JOIN date
+ON transactions.order_date = date.date
+WHERE date.year = "2020";
+
+SELECT SUM(transactions.sales_amount)
+FROM transactions
+INNER JOIN date
+ON transactions.order_date = date.date
+WHERE date.year = "2020";
+
+SELECT SUM(transactions.sales_amount)
+FROM transactions
+INNER JOIN date
+ON transactions.order_date = date.date
+WHERE date.year = "2020" AND transactions.market_code = "Mark001";
